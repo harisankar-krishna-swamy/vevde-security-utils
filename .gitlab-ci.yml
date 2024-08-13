@@ -1,0 +1,64 @@
+stages:
+    - test
+    - package
+    - upload
+
+.pyenv:
+  image: python:3.10
+  before_script:
+    - pip install -r dev-requirements.txt
+
+pre_commit:
+   stage: test
+   extends: .pyenv
+   script:
+       - echo "Pre-commit " `date`
+       - pre-commit run --all-files
+
+unit_tests:
+   stage: test
+   extends: .pyenv
+   variables:
+     cov_reports_dir: $CI_PROJECT_DIR/src/tests/coverage
+   script:
+       - echo "Pytest " `date`
+       - cd src && 
+         pytest --cov-config=$CI_PROJECT_DIR/.coveragerc
+         --cov --cov-report term
+         --cov-report xml:$cov_reports_dir/coverage.xml 
+         --cov-report html
+
+   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
+   artifacts:
+     paths:
+       - $cov_reports_dir
+     expire_in: 2 days
+     reports:
+       coverage_report:
+         coverage_format: cobertura
+         path: $cov_reports_dir/coverage.xml
+
+build_package:
+  stage: package
+  extends: .pyenv
+  script:
+    - echo "Package " `date`
+    - python3 -m build
+    - ls -l dist/ | tee dist/ls-artefacts.txt
+    - sha256sum dist/* | tee dist/sha256sum-artefacts.txt
+  artifacts:
+    paths:
+      - dist
+    expire_in: 2 days
+
+upload_pypi:
+  stage: upload
+  extends: .pyenv
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  script:
+    - echo "Upload "`date`
+    - pip install -r dist-requirements.txt
+    - ls -l dist/
+    - python3 -m twine upload dist/*.whl
+    - python3 -m twine upload dist/*.tar.gz
