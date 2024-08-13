@@ -1,0 +1,7 @@
+[run]
+source = vevde_security_utils
+data_file = tests/coverage/.coverage
+branch = true
+
+[html]
+directory = tests/coverage/html

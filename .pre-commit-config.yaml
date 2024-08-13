@@ -35,12 +35,6 @@ repos:
       - id: isort
         name: isort (python)
         args: ["--profile", "black", "--filter-files"]
-  - repo: https://github.com/Riverside-Healthcare/djLint
-    rev: v1.19.16
-    hooks:
-      - id: djlint-django
-        args:
-          - --reformat
   - repo: https://github.com/myint/autoflake
     rev: v1.4
     hooks:
