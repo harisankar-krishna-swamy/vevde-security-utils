@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["vevde_security_utils*"]
+namespaces = false
+
+[project]
+name = "vevde_security_utils"
+version = "1.0.0"
+authors = [
+  { name="Harisankar Krishna Swamy @ Vevde", email="harisankar.krishna@outlook.com" },
+]
+description = """A reusable library of security functions and tools for Python web frameworks
+like Django, Fast API, Flask etc."""
+readme = "README.md"
+requires-python = ">=3.7.4"
+dependencies = [
+    "cryptography>=3.4.8",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/harisankar-krishna-swamy/django_cacheable_model.git"

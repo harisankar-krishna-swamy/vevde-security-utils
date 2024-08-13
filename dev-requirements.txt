@@ -1,0 +1,10 @@
+-r requirements.txt
+ddt==1.6.0
+pytest==7.2.0
+pre-commit==2.21.0
+pytest-xdist==3.2.0
+pytest-cov==4.0.0
+flake8==6.0.0
+black==24.3.0
+isort==5.11.5
+build==0.10.0
