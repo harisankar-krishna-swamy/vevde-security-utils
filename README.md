@@ -1,10 +1,11 @@
 # Vevde security utils
-* A reusable library of security functions and tools. This allows utility functions to used in
-multiple Python web frameworks such as Django, Fast API, Flask and the like 
-
+* A reusable library of security functions and tools. This make utility functions available for all Python web frameworks like Django, Fast API, Flask etc.
 
 # 1. Install
 pip install vevde-security-utils
 
-# 4. License
+# Example usage
+See `tests` package for each function
+
+# 3. License
 Apache2 License
