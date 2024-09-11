@@ -1,8 +1,7 @@
 import base64
 import hashlib
 import hmac
-
-encoding = 'utf-8'
+from typing import Union
 
 digests_map = {
     'HMAC-SHA512': hashlib.sha512,
@@ -11,14 +10,14 @@ digests_map = {
 }
 
 
-def hash_content(digest: str, content: bytes):
+def hash_content(digest: str, content: bytes) -> Union[str, None]:
     """
     Compute hash on content using function specified by digest
 
     @param digest: HMAC method. One of 'HMAC-SHA512', 'HMAC-SHA384', 'HMAC-SHA256'
     @param content: bytes to hash
 
-    @return: base64 of hash
+    @return: base64 of hash as str
     """
     if not content:
         return None
@@ -31,11 +30,11 @@ def hash_content(digest: str, content: bytes):
     hasher.update(content)
     hashed_bytes = hasher.digest()
     base64_encoded_bytes = base64.b64encode(hashed_bytes)
-    content_hash = base64_encoded_bytes.decode(encoding)
+    content_hash = base64_encoded_bytes.decode()
     return content_hash
 
 
-def sign_string(string_to_sign: str, secret: bytes, digest):
+def sign_string(string_to_sign: str, secret: bytes, digest) -> str:
     """
     Sign a string with hmac secret using digest's hash function
 
@@ -47,10 +46,10 @@ def sign_string(string_to_sign: str, secret: bytes, digest):
     """
     if digest not in digests_map.keys():
         raise ValueError(f'Unsupported HMAC function {digest}')
-    encoded_string_to_sign = string_to_sign.encode(encoding)
+    encoded_string_to_sign = string_to_sign.encode()
     hashed_bytes = hmac.digest(
         secret, encoded_string_to_sign, digest=digests_map[digest]
     )
     encoded_signature = base64.b64encode(hashed_bytes)
-    signature = encoded_signature.decode(encoding)
+    signature = encoded_signature.decode()
     return signature
