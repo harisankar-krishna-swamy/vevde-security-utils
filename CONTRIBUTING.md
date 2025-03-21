@@ -1,20 +1,12 @@
-# Contributing to Django Cacheable Model
-
-## Feature proposals, Bug reports
+# Contributing (Only Feature proposals, Suggestions and Bug reports)
 
 Open issues on GitHub. Always include 
 
-1) What exists and why it needs to change. 
-2) Try in a test environment and ideally in a separate project with this package as a dependency.
-3) List steps to reproduce issues.
-4) If available, provide screenshots or videos.
+1) What exists and why it needs to change
+2) Try in a test environment and ideally in a separate project with this package as a dependency
+3) List steps to reproduce issues
+4) If available, provide screenshots or videos
 
-## Pull requests
+### No pull requests
 
-Coding standards and issued guidelines/steps are mandatory to accept pull requests. Standard linting and formatting tools are used as listed in `.pre-commit-config.yaml`
-When in doubt follow what the surrounding code's standard does. 
-As far as code goes, think in terms of 
-
-1) Maintainability
-2) Efficiency and readability
-3) Add tests. Do not just tweak existing tests
+Fork is encouraged allowing this project to evolve in its own pace.

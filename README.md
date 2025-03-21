@@ -1,5 +1,5 @@
 # Vevde security utils
-A reusable library of security functions and tools. This package is not tied to any web framwork. So multiple  
+A reusable library of security functions and tools. This package is not tied to any web framwork. So multiple 
 Python web frameworks like Django, Fast API, Flask can use it.
 
 # 1. Install
