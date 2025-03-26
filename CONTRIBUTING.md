@@ -7,6 +7,6 @@ Open issues on GitHub. Always include
 3) List steps to reproduce issues
 4) If available, provide screenshots or videos
 
-### No pull requests
+## < No pull requests >
 
 Fork is encouraged allowing this project to evolve in its own pace.
