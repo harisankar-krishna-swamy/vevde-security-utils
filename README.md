@@ -18,7 +18,15 @@ See `tests` package for each function
 #### Notes
 >> File encryption and decryption:  
 > a) Read chunk size (eg. 1024, 2048...) and cipher block size (16 for AES and Camellia) must be provided by client applications
- 
 
-# 3. License
+# 5. Features
+a) File encryption  
+b) HMAC hash based Message Authentication Codes  
+c) Digital signatures using hmac secrets  
+d) Small size data encryption
+
+# 4. License
 Apache2 License
+
+#encryption #fileencryption #security #hmac #softwaresecurity #authentication #signature #symmetric #ciphers #hash #python  
+#django #fastapi #api #apisecurity
